@@ -1,1 +1,23 @@
 @import "tailwindcss";
+
+@theme {
+  --color-primary: #169435;
+  --color-secondary: #0377ae;
+  --color-accent: #40c4ea;
+  --color-text: #ebefec;
+  --color-background: #050605;
+
+  --color-primary-hover: #127a2b;
+  --color-secondary-hover: #02608c;
+  --color-accent-hover: #2bb7d9;
+
+  --color-muted: #9aa6a3;
+  --color-danger: #e53935;
+  --color-danger-hover: #c62828;
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+body {
+  @apply font-sans bg-background text-text;
+}
