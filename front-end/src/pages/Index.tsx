@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Galaxy from "../components/reactBits/Galaxy";
 import BlurText from "../components/reactBits/BlurText";
 import ActionButton from "../components/common/ActionButton";
@@ -7,7 +7,7 @@ const Index = () => {
   const [showDescription, setShowDescription] = useState(false);
 
   return (
-    <div className="w-screen h-screen ">
+    <div className="w-screen h-screen">
       <Galaxy
         density={0.5}
         glowIntensity={0.2}
@@ -28,14 +28,14 @@ const Index = () => {
               delay={150}
               animateBy="words"
               direction="top"
-              className="text-4xl"
+              className="text-4xl max-sm:text-2xl"
             />
             <BlurText
               text="GeoPulse"
               delay={300}
               animateBy="words"
               direction="top"
-              className="text-8xl"
+              className="text-8xl max-sm:text-6xl"
               gradient="linear-gradient(90deg,var(--color-text), var(--color-primary))"
               onAnimationComplete={() => setShowDescription(true)}
             />
@@ -46,11 +46,9 @@ const Index = () => {
               showDescription
                 ? "opacity-100 translate-y-0"
                 : "opacity-0 -translate-y-2 pointer-events-none"
-            }`}
+            } max-sm:text-xs`}
           >
-            GeoPulse helps you track, detect, and stay informed about natural
-            disasters around the world — empowering you to analyze situations
-            and make timely decisions.
+            GeoPulse — Feel the Earth’s pulse and stay ahead of every disaster.
           </p>
           <ActionButton
             variant="primary"
