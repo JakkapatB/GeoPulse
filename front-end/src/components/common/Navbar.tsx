@@ -21,7 +21,7 @@ const Navbar = () => {
   }, [showEmergency, close]);
 
   return (
-    <nav className="flex flex-row w-screen h-full items-center justify-between bg-surface px-24 py-2 ">
+    <nav className="flex flex-row w-screen h-full items-center justify-between bg-surface px-12 py-2 ">
       <div className="flex flex-row items-center gap-4">
         <Link to="/map-monitor">
           <img
