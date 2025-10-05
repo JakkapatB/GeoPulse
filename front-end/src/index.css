@@ -6,6 +6,7 @@
   --color-accent: #40c4ea;
   --color-text: #ebefec;
   --color-background: #050605;
+  --color-surface: #1a1a1a; 
 
   --color-primary-hover: #127a2b;
   --color-secondary-hover: #02608c;
@@ -14,6 +15,8 @@
   --color-muted: #9aa6a3;
   --color-danger: #e53935;
   --color-danger-hover: #c62828;
+  --color-warning: #ffb300;
+  --color-warning-hover: #ffa000;
 
   --font-sans: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
 }
