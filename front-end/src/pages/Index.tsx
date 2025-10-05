@@ -1,10 +1,12 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Galaxy from "../components/reactBits/Galaxy";
 import BlurText from "../components/reactBits/BlurText";
 import ActionButton from "../components/common/ActionButton";
 
 const Index = () => {
   const [showDescription, setShowDescription] = useState(false);
+  const navigate = useNavigate();
 
   return (
     <div className="w-screen h-screen">
@@ -53,10 +55,10 @@ const Index = () => {
           <ActionButton
             variant="primary"
             size="lg"
-            onClick={() => alert("Get Started clicked!")}
+            onClick={() => navigate("/map-monitor")}
             className={`${showDescription ? "opacity-100" : "opacity-0"} `}
           >
-            Get Started
+            Open Map
           </ActionButton>
         </div>
       </div>
