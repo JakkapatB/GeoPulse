@@ -6,7 +6,7 @@
   --color-accent: #40c4ea;
   --color-text: #ebefec;
   --color-background: #050605;
-  --color-surface: #1a1a1a; 
+  --color-surface: #1a1a1a;
 
   --color-primary-hover: #127a2b;
   --color-secondary-hover: #02608c;
@@ -18,9 +18,11 @@
   --color-warning: #ffb300;
   --color-warning-hover: #ffa000;
 
-  --font-sans: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, BlinkMacSystemFont,
+    sans-serif;
 }
 
 body {
   @apply font-sans bg-background text-text;
+  @apply overflow-hidden;
 }
