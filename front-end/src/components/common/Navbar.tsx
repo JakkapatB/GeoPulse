@@ -1,53 +1,95 @@
+import { useState } from "react";
 import { LuMapPin } from "react-icons/lu";
 import { Link } from "react-router-dom";
-import { GoAlertFill } from "react-icons/go";
-import ModalEmergency from "./ModalEmergency";
-import { useCallback, useEffect, useState } from "react";
+import { useUserLocation } from "../../context/UserLocationContext";
+import { FiMenu, FiX } from "react-icons/fi";
 
 const Navbar = () => {
-  const [showEmergency, setShowEmergency] = useState(false);
+  const { coords, placeName, updating } = useUserLocation();
+  const [menuOpen, setMenuOpen] = useState(false);
 
-  const open = useCallback(() => setShowEmergency(true), []);
-  const close = useCallback(() => setShowEmergency(false), []);
-
-  // ปิดด้วย Escape
-  useEffect(() => {
-    if (!showEmergency) return;
-    const handler = (e: KeyboardEvent) => {
-      if (e.key === "Escape") close();
-    };
-    window.addEventListener("keydown", handler);
-    return () => window.removeEventListener("keydown", handler);
-  }, [showEmergency, close]);
+  const locationDisplay = (
+    <div className="flex flex-col space-y-1 min-w-[180px] max-w-[260px]">
+      <span className="text-xs text-muted">Your location</span>
+      <div className="flex flex-row items-center gap-2">
+        <LuMapPin className="text-lg text-primary shrink-0" />
+        {placeName ? (
+          <span className="text-sm font-medium truncate" title={placeName}>
+            {placeName}
+          </span>
+        ) : coords ? (
+          <span className="text-sm font-mono">
+            {coords.lat.toFixed(4)}, {coords.lng.toFixed(4)}
+          </span>
+        ) : (
+          <span className="text-sm text-muted">Locating...</span>
+        )}
+        {updating && (
+          <span className="text-[10px] text-muted animate-pulse">
+            (updating)
+          </span>
+        )}
+      </div>
+    </div>
+  );
 
   return (
-    <nav className="flex flex-row w-screen h-full items-center justify-between bg-surface px-12 py-2 ">
-      <div className="flex flex-row items-center gap-4">
-        <Link to="/map-monitor">
-          <img
-            src="logo.svg"
-            alt="GeoPulse"
-            className="w-full h-12 object-contain border-r border-gray-500 pr-2 "
-          />
-        </Link>
-        <div className="flex flex-col space-y-1">
-          <span className="text-xs text-muted">You are viewing a map of</span>
-          <div className="flex flex-row items-center gap-2">
-            <LuMapPin className="text-lg text-primary" />
-            <span className="text-lg font-semibold">Bangkok, Thailand</span>
+    <nav className="w-full bg-surface sticky top-0 z-40">
+      <div className="mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-12 py-2 gap-4">
+        {/* Left section: Logo + (desktop) location */}
+        <div className="flex items-center gap-4 min-w-0">
+          <Link
+            to="/map-monitor"
+            className="flex items-center focus:outline-none rounded"
+          >
+            <img
+              src="logo.svg"
+              alt="GeoPulse"
+              className="h-10 w-auto object-contain pr-2 border-r border-border/40 max-[768px]:border-hidden"
+            />
+          </Link>
+          {/* Desktop Location (hidden on small) */}
+          <div className="hidden md:block">{locationDisplay}</div>
+        </div>
+
+        {/* Right section: actions (placeholder) & mobile toggle */}
+        <div className="flex items-center gap-3">
+          {/* Placeholder for future actions (alerts, profile, filters) */}
+          <div className="hidden sm:flex items-center gap-2">
+            {/* Add buttons/components here e.g. <UserAlerts /> */}
+          </div>
+          {/* Mobile menu button */}
+          <button
+            type="button"
+            aria-label={menuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((o) => !o)}
+            className="md:hidden inline-flex items-center justify-center rounded-md p-2 text-primary hover:bg-primary/10 focus:outline-none focus:ring-2 focus:ring-primary"
+          >
+            {menuOpen ? (
+              <FiX className="h-5 w-5" />
+            ) : (
+              <FiMenu className="h-5 w-5" />
+            )}
+          </button>
+        </div>
+      </div>
+
+      {/* Mobile panel */}
+      <div
+        className={`md:hidden origin-top transition-all duration-200 ease-out ${
+          menuOpen ? "max-h-[240px] opacity-100" : "max-h-0 opacity-0"
+        } overflow-hidden border-t border-border/30 bg-surface/95 backdrop-blur`}
+      >
+        <div className="px-4 flex flex-col py-4">
+          {locationDisplay}
+          {/* Mobile actions placeholder */}
+          <div className="flex flex-col gap-2">
+            {/* Example placeholder buttons */}
+            {/* <ActionButton label="Alerts" /> */}
           </div>
         </div>
       </div>
-      <button
-        onClick={open}
-        className="flex flex-row items-center border border-warning p-2 gap-2 text-warning hover:text-warning-hover active:scale-95 transition-all duration-150 cursor-pointer rounded-md"
-        aria-haspopup="dialog"
-        aria-expanded={showEmergency}
-      >
-        <span className="font-medium">Emergency</span>
-        <GoAlertFill className="text-xl animate-pulse drop-shadow" />
-      </button>
-      <ModalEmergency open={showEmergency} onClose={close} />
     </nav>
   );
 };
