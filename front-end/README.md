@@ -1,73 +1,63 @@
-# React + TypeScript + Vite
+# GeoPulse 🌍
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+webapp url - https://geo-pulse-app.vercel.app/
 
-Currently, two official plugins are available:
+GeoPulse เป็นแอปพลิเคชันเว็บสำหรับติดตามและแสดงข้อมูลภัยพิบัติทางธรรมชาติแบบเรียลไทม์บนแผนที่โต้ตอบได้ ช่วยให้ผู้ใช้สามารถติดตามสถานการณ์และรับการแจ้งเตือนได้อย่างทันท่วงที และสามารถช่วยแจ้เตือนเหตุต่างๆในจุดที่ตัวเองอยู่หรือมีข้อมูลได้
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## ✨ ฟีเจอร์หลัก
 
-## React Compiler
+- 🗺️ **แผนที่แบบโต้ตอบได้** - แสดงข้อมูลภัยพิบัติบนแผนที่ด้วย MapLibre GL และสามารถ mark จุดเตือนภัยต่างๆเองได้ เพื่อช่วยแจ้งเตือนคนอื่นๆ
+- 📍 **ระบุตำแหน่งอัตโนมัติ** - ตรวจจับตำแหน่งของผู้ใช้และแสดงชื่อสถานที่
+- 🔥 **Hotspot Reporting** - รายงานจุดเสี่ยงและพื้นที่อันตราย
+- 📈 **Graph ความถี่ของเหตุการณ์** - แสดงรายงานความถี่ของเหตุที่เกิดขึ้นในโลกนี้
+- 📅 **กรองตามวันที่** - กรองข้อมูลตามช่วงเวลาที่ต้องการ
+- 📱 **Responsive Design** - รองรับการแสดงผลบนทุกขนาดหน้าจอ
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## 🛠️ เทคโนโลยีที่ใช้
 
-## Expanding the ESLint configuration
+- **React 19** - UI Library
+- **TypeScript** - Type-safe development
+- **Vite** - Build tool และ dev server
+- **React Router** - Client-side routing
+- **MapLibre GL** - Interactive maps
+- **Tailwind CSS** - Utility-first CSS framework
+- **Motion** - Animation library
+- **Axios** - HTTP client
+- **React Icons** - Icon library
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 📋 ความต้องการของระบบ
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Node.js 18.x หรือสูงกว่า
+- npm 9.x หรือ yarn 1.22.x
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🚀 การติดตั้งและรัน
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### 1. Clone repository
+
+```bash
+git clone https://github.com/JakkapatB/GeoPulse.git
+cd GeoPulse/front-end
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. ติดตั้ง dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
+# หรือ
+yarn install
 ```
+
+### 3. รัน Development Server
+
+```bash
+npm run dev
+# หรือ
+yarn dev
+```
+
+เปิดเบราว์เซอร์ที่ `http://localhost:5173`
+
+## 👨‍💻 ผู้พัฒนา
+
+**Jakkapat Boonvirat** - [@JakkapatB](https://github.com/JakkapatB)
+
