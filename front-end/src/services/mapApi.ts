@@ -15,9 +15,8 @@ export type MapFeatureCollection = GeoJSON.FeatureCollection<
   MapFeatureProperties
 >;
 
-const API_KEY =
-  "7YS8I82KbtLtZZejpWqMzeeIdtKahrUEMPhHW1PuX5DlhY6qjaZaFQOHi15RpH48";
-const BASE_URL = "https://app.vallarismaps.com/core/api/features/1.1";
+const API_KEY = import.meta.env.VITE_VALLARIS_API_KEY;
+const BASE_URL = import.meta.env.VITE_VALLARIS_BASE_URL;
 
 export const getMapFeatures = async (
   collectionId: string
